@@ -1,0 +1,32 @@
+server:
+  port: 8089
+spring:
+  application:
+    name: api-gateway
+#zuul:
+#  routes:
+#    #用户模块
+#    user-server: /user-server/**
+#    #收货地址模块
+#    shipping-server: /shipping-server/**
+#    #产品模块
+#    product-server: /product-server/**
+#    #购物车模块
+#    cart-server: /cart-server/**
+#    #订单模块
+#    order-server: /order-server/**
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:1111/eureka/
+
+#swagger 聚合各个微服务api文档
+swagger:
+  butler:
+    auto-generate-from-zuul-routes: true
+    api-docs-path: /v2/api-docs?group=mall
+    swagger-version: 1.0
+
+
+

@@ -1,0 +1,26 @@
+server:
+  port: 8088
+
+spring:
+  application:
+    name: config-server
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/little-humor/configServer/
+          search-paths: mall/{application}
+  security:
+    user:
+      name: humor
+      password: 123321!
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:1111/eureka
+
+
+
+
+
+
