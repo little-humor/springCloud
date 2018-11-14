@@ -8,16 +8,19 @@ spring:
     config:
       server:
         git:
-          uri: https://github.com/little-humor/configServer/
+          uri: git@github.com:little-humor/configServer.git
           search-paths: mall/{application}
   security:
     user:
       name: humor
       password: 123321!
 eureka:
+  instance:
+    prefer-ip-address: true
   client:
     service-url:
-      defaultZone: http://localhost:1111/eureka
+      defaultZone: http://eureka.springcloud.cn/eureka
+
 
 
 
