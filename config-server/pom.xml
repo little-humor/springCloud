@@ -8,7 +8,7 @@
     <version>0.0.1-SNAPSHOT</version>
     <packaging>jar</packaging>
 
-    <name>config-server</name>
+    <name>config</name>
     <description>Demo project for Spring Boot</description>
 
     <parent>
@@ -23,7 +23,7 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <java.version>1.8</java.version>
         <spring.cloud.version>Finchley.SR2</spring.cloud.version>
-        <docker.repository>registry.cn-hangzhou.aliyuncs.com/humor/config-server</docker.repository>
+        <docker.repository>registry.cn-beijing.aliyuncs.com/humor</docker.repository>
     </properties>
 
     <dependencies>
@@ -73,7 +73,6 @@
                 <groupId>com.spotify</groupId>
                 <artifactId>dockerfile-maven-plugin</artifactId>
                 <version>1.4.3</version>
-
                 <executions>
                     <execution>
                         <id>default</id>
@@ -84,7 +83,7 @@
                     </execution>
                 </executions>
                 <configuration>
-                    <repository>${docker.repository}</repository>
+                    <repository>${docker.repository}/${project.artifactId}</repository>
                     <buildArgs>
                         <JAR_FILE>${project.artifactId}-${project.version}.jar</JAR_FILE>
                     </buildArgs>

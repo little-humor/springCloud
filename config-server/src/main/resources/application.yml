@@ -19,7 +19,7 @@ eureka:
     prefer-ip-address: true
   client:
     service-url:
-      defaultZone: http://eureka.springcloud.cn/eureka
+      defaultZone: http://47.95.109.142:1111/eureka
 
 
 
