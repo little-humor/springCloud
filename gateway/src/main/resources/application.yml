@@ -1,0 +1,22 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: gateway-server
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true #是否与服务发现组件进行结合，通过serviceId转发到具体的服务实例
+          lower-case-service-id: true #eureka为注册中心时，默认serviceId为大写，改为true使用小写的serviceId进行路由转发
+
+
+eureka:
+  instance:
+    prefer-ip-address: true #在eureka注册中心显示服务的ip
+  client:
+    service-url:
+      defaultZone: http://eureka.springcloud.cn/eureka
+
+
