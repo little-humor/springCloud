@@ -1,4 +1,4 @@
-package com.humor.configserver;
+package com.humor.config;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
