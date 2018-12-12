@@ -18,6 +18,15 @@ spring:
           enabled: true
           lower-case-service-id: true
       routes:
+      #用户服务
+      - id: user
+        uri: lb://user-server
+        predicates:
+        - Path=/admin/**
+        filters:
+        - SwaggerHeaderFilter
+        - StripPrefix=1
+      #商品服务
       - id: product
         uri: lb://product-server
         predicates:
@@ -25,6 +34,30 @@ spring:
         filters:
         - SwaggerHeaderFilter
         - StripPrefix=1
+#      #购物车服务
+#      - id: cart
+#        uri: lb://cart-server
+#        predicates:
+#        - Path=/admin/**
+#        filters:
+#        - SwaggerHeaderFilter
+#        - StripPrefix=1
+#      #收货地址服务
+#      - id: shipping
+#        uri: lb://shipping-server
+#        predicates:
+#        - Path=/admin/**
+#        filters:
+#        - SwaggerHeaderFilter
+#        - StripPrefix=1
+#      #订单服务
+#      - id: order
+#        uri: lb://order-server
+#        predicates:
+#        - Path=/admin/**
+#        filters:
+#        - SwaggerHeaderFilter
+#        - StripPrefix=1
 
 
 eureka:
