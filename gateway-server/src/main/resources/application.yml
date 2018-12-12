@@ -1,0 +1,43 @@
+server:
+  port: 8080
+  ssl:
+    key-alias: gateway
+    key-password: 123321!
+    key-store: classpath:gateway.jks
+    key-store-password: 123321!
+    key-store-provider: SUN
+    key-store-type: JKS
+
+spring:
+  application:
+    name: gateway-server
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+          lower-case-service-id: true
+      routes:
+      - id: product
+        uri: lb://product-server
+        predicates:
+        - Path=/admin/**
+        filters:
+        - SwaggerHeaderFilter
+        - StripPrefix=1
+
+
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    service-url:
+      defaultZone: http://eureka.springcloud.cn/eureka
+
+logging:
+  level:
+    #gateway相关调试日志
+    org.springframework.cloud.gateway: TRACE
+    org.springframework.http.server.reactive: DEBUG
+    org.springframework.web.reactive: DEBUG
+    reactor.ipc.netty: DEBUG

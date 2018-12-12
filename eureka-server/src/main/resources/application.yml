@@ -1,0 +1,11 @@
+server:
+  port: 1111
+
+spring:
+  application:
+    name: eureka-server
+eureka:
+  client:
+    service-url: http://localhost:${server.port}/eureka
+    fetch-registry: false
+    register-with-eureka: false
